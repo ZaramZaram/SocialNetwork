@@ -1,0 +1,4 @@
+{% extends 'base.html' %}
+{% block content %}
+    hallo {{ user.full_name|truncatewords:15  }}
+{% endblock %}

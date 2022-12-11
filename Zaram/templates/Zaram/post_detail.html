@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+{%  if user.is_authenticated %}
+   <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation" >
+    <button class="nav-link active" id="mypost-tab" data-toggle="tab" data-target="#mypost" type="button" role="tab" aria-controls="mypost" aria-selected="true">My Post</button>
+  </li>
+  <li class="nav-item">
+    <button class="nav-link " id="otherpost-tab" data-toggle="tab" data-target="#otherpost" type="button" role="tab" aria-controls="otherpost" aria-selected="false">Friend Post</button>
+  </li>
+  <li class="nav-item" >
+    <button class="nav-link" id="follower-tab" data-toggle="tab" data-target="#follower" type="button" role="tab" aria-controls="follower" aria-selected="false">Follower</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane active" id="mypost" role="tabpanel" aria-labelledby="mypost-tab">
+
+   {% for po in posts %}
+         <h1>{{ po.id}}</h1>
+   {#        <img class="card-img-left" src="{{MEDIA_URL}}/{{ po.postimage_set.avatar }}"#}
+{#             width="240px" height="240px" alt="post image">#}
+       {% endfor %}
+
+  </div>
+  <div class="tab-pane" id="otherpost" role="tabpanel" aria-labelledby="otherpost-tab">fgdfg</div>
+  <div class="tab-pane" id="follower" role="tabpanel" aria-labelledby="follower-tab">.dfgdfg..</div>
+</div>
+
+{% endif %}
+   {% endblock %}

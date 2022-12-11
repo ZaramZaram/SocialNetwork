@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <span class="border-right" style="width: 33%">
+        <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><img src=""></button>
+        </form>
+    </span>
+    <span style="width: 33%">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul style="list-style-type: none;margin: 0;padding: 0; overflow: hidden;">
+      <li style="float: left;display: block;  color: white;  text-align: center;  padding: 14px 16px;  text-decoration: none;">
+        <a class="nav-link" href="{% url 'homepage' %}">Home</a>
+      </li>
+      <li style="  float: left;display: block;  color: white;  text-align: center;  padding: 14px 16px;  text-decoration: none;">
+        <a class="nav-link" href="#">Clubs</a>
+      </li>
+        <li style=" float: left;display: block;  color: white;  text-align: center;  padding: 14px 16px;  text-decoration: none;">
+        <a class="nav-link" href="#">News</a>
+      </li>
+
+    </ul>
+    </div></span>
+    <span class="border-left" style="width: 33%">
+
+
+    <ul class="navbar-nav mr-auto" style="float: right;">
+           {% if request.user.is_authenticated %}
+         <li class="nav-item">
+          <a class="nav-link" href="{% url 'user_login' %}">Log out</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'user_profile' user.pk  %}">Profile</a>
+        </li>
+               <li class="nav-item" >
+                   <h5 class="" style="margin-top: 17px;">{{ user.first_name }}</h5>
+               </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'user_login' %}">Log in</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'user_registration' %}">Sign up</a>
+        </li>
+        {% endif %}
+    </ul>
+        </ul>
+</span>
+</nav>
