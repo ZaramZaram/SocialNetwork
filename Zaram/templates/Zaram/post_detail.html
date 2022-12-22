@@ -14,16 +14,23 @@
 </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane active" id="mypost" role="tabpanel" aria-labelledby="mypost-tab">
-
-   {% for po in posts %}
-         <h1>{{ po.id}}</h1>
-   {#        <img class="card-img-left" src="{{MEDIA_URL}}/{{ po.postimage_set.avatar }}"#}
-{#             width="240px" height="240px" alt="post image">#}
-       {% endfor %}
-
+{% for po in posts %}
+    <div class="card-deck" style="width: 30%; max-width: 735px">
+  <div class="card">
+     <img class="card-img" src="{{ MEDIA_URL }}/{{ po.postimage_set.first.avatar }}"
+              alt="post image" style="float: left; margin: auto">
+    <div class="card-body">
+      <p class="card-text">{{ po.body }}</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">{{ po.creation_date.date}}</small>
+    </div>
   </div>
-  <div class="tab-pane" id="otherpost" role="tabpanel" aria-labelledby="otherpost-tab">fgdfg</div>
-  <div class="tab-pane" id="follower" role="tabpanel" aria-labelledby="follower-tab">.dfgdfg..</div>
+  </div>
+{% endfor %}
+  </div>
+  <div class="tab-pane" id="otherpost" role="tabpanel" aria-labelledby="otherpost-tab"></div>
+  <div class="tab-pane" id="follower" role="tabpanel" aria-labelledby="follower-tab"></div>
 </div>
 
 {% endif %}
