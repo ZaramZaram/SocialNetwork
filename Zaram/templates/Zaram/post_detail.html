@@ -17,8 +17,9 @@
 {% for po in posts %}
     <div class="card-deck" style="width: 30%; max-width: 735px">
   <div class="card">
+      <a href="">
      <img class="card-img" src="{{ MEDIA_URL }}/{{ po.postimage_set.first.avatar }}"
-              alt="post image" style="float: left; margin: auto">
+              alt="post image" style="float: left; margin: auto"></a>
     <div class="card-body">
       <p class="card-text">{{ po.body }}</p>
     </div>

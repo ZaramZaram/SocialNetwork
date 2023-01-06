@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib import messages
 from Zaram.models import Post
-from Zaram.forms import PostUpdateForm
+from Zaram.forms import PostUpdateForm, CommentCreateForm
 
 
 class HomePage(View):
@@ -19,9 +19,11 @@ class PostDetailView(View):
      #    render(request, 'Zaram/index.html')
 
      def get(self, request):
+         frm_class = CommentCreateForm
          if request.user.is_authenticated:
              posts = Post.objects.filter(user_id=request.user.id)
-             return render(request, 'Zaram/post_detail.html', {"posts": posts})
+
+             return render(request, 'Zaram/post_detail.html', {"posts": posts,'form': self.frm_class})
          return render(request, 'Zaram/index.html')
 
 class PostDeleteView(LoginRequiredMixin, View):
